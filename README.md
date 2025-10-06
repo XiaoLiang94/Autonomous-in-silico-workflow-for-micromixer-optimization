@@ -8,10 +8,10 @@ The workflow integrated a multi-objective genetic algorithm for guiding the opti
 
 
 <p align="center">
-  <img src="images/Figure.jpg" width="200" alt="Micromixer Design">
+  <img src="https://github.com/user-attachments/assets/e8405515-c46c-4b26-bbeb-864f393f845c" width="600" alt="Micromixer Design">
 </p>
 
-The repository contains all the main code and files to run a demonstration example, which employs 3 generations and 2 solutions per generation.
+The repository folder contains the main code and files to run a demonstration example, which employs 3 generations and 2 solutions per generation.
 
 **Folder Structure**
 
