@@ -16,12 +16,12 @@ Sub main()
 
 
     Set swApp = Application.SldWorks
-    swApp.Visible = False ' Òş²Ø SolidWorks ½çÃæ
+    swApp.Visible = False ' éšè— SolidWorks ç•Œé¢
     
    ' Initialize Excel and open workbook
     Set ExcelApp = CreateObject("Excel.Application")
-    Set ExcelWorkbook = ExcelApp.Workbooks.Open("D:\Close_loop_in_silico_optimization_showcase\Test.xlsx") ' ĞŞ¸ÄÎªÄãµÄExcelÎÄ¼şÂ·¾¶
-    Set ws = ExcelWorkbook.Sheets("Solidworks") ' ĞŞ¸ÄÎªÄãµÄ¹¤×÷±íÃû³Æ
+    Set ExcelWorkbook = ExcelApp.Workbooks.Open("D:\Close_loop_in_silico_optimization_showcase\Test.xlsx") ' ä¿®æ”¹ä¸ºä½ çš„Excelæ–‡ä»¶è·¯å¾„
+    Set ws = ExcelWorkbook.Sheets("Solidworks") ' ä¿®æ”¹ä¸ºä½ çš„å·¥ä½œè¡¨åç§°
 
     ' Determine the last row with data in the worksheet
     Dim lastRow As Long
@@ -158,14 +158,14 @@ Sub main()
         
         vBodies = Part.GetBodies2(swAllBodies, False)
 
-        ' ³õÊ¼»¯×î´óÌå»ıºÍË÷Òı
+        ' åˆå§‹åŒ–æœ€å¤§ä½“ç§¯å’Œç´¢å¼•
         maxVolume = 0
         maxVolumeIndex = -1
     
-        ' ±éÀúËùÓĞÊµÌåÌå£¬ÕÒµ½Ìå»ı×î´óµÄÊµÌåÌå
+        ' éå†æ‰€æœ‰å®ä½“ä½“ï¼Œæ‰¾åˆ°ä½“ç§¯æœ€å¤§çš„å®ä½“ä½“
             For j = 0 To UBound(vBodies)
             Set swBody = vBodies(j)
-            swMassProp = swBody.GetMassProperties(1) ' Ê¹ÓÃÄ¬ÈÏµ¥Î»£¨Ã×-Ç§¿Ë-Ãë£©
+            swMassProp = swBody.GetMassProperties(1) ' ä½¿ç”¨é»˜è®¤å•ä½ï¼ˆç±³-åƒå…‹-ç§’ï¼‰
         
             If Not IsEmpty(swMassProp) Then
                 If swMassProp(3) > maxVolume Then
@@ -176,11 +176,11 @@ Sub main()
             End If
         Next j
     
-        ' ±éÀúËùÓĞÊµÌåÌå£¬É¾³ıÌå»ıĞ¡µÄÊµÌåÌå
+        ' éå†æ‰€æœ‰å®ä½“ä½“ï¼Œåˆ é™¤ä½“ç§¯å°çš„å®ä½“ä½“
         For j = 0 To UBound(vBodies)
             Set swBody = vBodies(j)
         
-            ' Èç¹û²»ÊÇÌå»ı×î´óµÄÊµÌåÌå£¬É¾³ıËü
+            ' å¦‚æœä¸æ˜¯ä½“ç§¯æœ€å¤§çš„å®ä½“ä½“ï¼Œåˆ é™¤å®ƒ
             If swBody.Name <> maxVolumeBodyName Then
                 boolstatus = Part.Extension.SelectByID2(swBody.Name, "SOLIDBODY", 0, 0, 0, False, 0, Nothing, 0)
                 Part.ClearSelection2 True
