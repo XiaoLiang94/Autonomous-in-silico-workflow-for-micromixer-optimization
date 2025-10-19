@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jan 19 23:33:16 2025
-
 @author: Xiao Liang
 """
 
@@ -43,7 +41,7 @@ def open_sldprt_and_run_macro(file_path, macro_path, macro_module1, macro_proced
         return
 
     # SolidWorks executable path
-    solidworks_exe = r"D:\software\solidworks\SOLIDWORKS\SLDWORKS.exe"
+    solidworks_exe = r"D:\XXXXX\XXXXX\SLDWORKS.exe"
     if not os.path.exists(solidworks_exe):
         print(f"SolidWorks executable path does not exist: {solidworks_exe}")
         return
@@ -875,7 +873,6 @@ summary_file = os.path.join(output_folder, 'summary.csv')
 process_all_csv_files(dest_dir, output_folder, summary_file)
 
 
-
 # Real-time plotting setup
 plt.ion()
 fig, ax = plt.subplots()
@@ -913,7 +910,6 @@ ax.legend(loc='upper right')
 # Redraw the plot
 plt.draw()
 plt.pause(0.1)  # Allow GUI event processing
-
 
 
 # Optimization loop
@@ -961,8 +957,7 @@ for i in range(2, generations + 2):
     )
 
         
-        
-    ## Run solidworks
+    ## Run solidWorks
     dest_dir = rf"D:\Close_loop_in_silico_optimization_showcase\T_{i}"
     macro_file = copy_and_rename_macro_file(src_macro_file, dest_dir, i)
     
@@ -1003,7 +998,6 @@ for i in range(2, generations + 2):
         )
 
         
-        
     ## Run starccm+
     input_java_file = r"D:\Close_loop_in_silico_optimization_showcase\Run_CFD.java" 
     output_java_file = rf"C:\Program Files\Siemens\17.04.008\STAR-CCM+17.04.008\star\bin\Run_CFD_Modified.java"  
@@ -1026,8 +1020,6 @@ for i in range(2, generations + 2):
     # Process all CSV files in the input folder and create the summary
     process_all_csv_files(dest_dir, output_folder, summary_file)
 
-   
-
     
     # Plotting updated population
     # Read data from the summary CSV for the current generation
@@ -1046,8 +1038,6 @@ for i in range(2, generations + 2):
     plt.draw()
     plt.pause(0.1)  # Allow GUI event processing
         
-    
-    
     
     ## Automatically read fitness values for the current generation
     if not os.path.exists(summary_file):
@@ -1080,6 +1070,7 @@ for i in range(2, generations + 2):
 # Finalize plot
 plt.ioff()  # Disable interactive mode
 plt.show()  # Display the final plot
+
 
 
 
